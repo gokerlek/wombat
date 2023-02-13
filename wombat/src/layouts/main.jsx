@@ -6,8 +6,10 @@ const MainLayout = () => {
   return (
     <div className="w-screen h-screen">
       <Header />
+
       <div className="flex flex-row w-screen h-[calc(100vh-84px)]">
         <Sidebar />
+
         <div className=" w-full">
           <Outlet />
         </div>

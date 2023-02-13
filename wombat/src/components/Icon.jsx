@@ -15,11 +15,12 @@
  */
 
 import iconList from "../hooks/iconList.jsx";
+import clsx from "clsx";
 
 const Icon = ({ purpose = "", width, height, color, className, onClick }) => {
   return (
     <div
-      className={className}
+      className={clsx(className, { "cursor-pointer": !!onClick })}
       onClick={onClick}
       style={{
         width: width,

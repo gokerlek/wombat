@@ -7,6 +7,7 @@ const Sidebar = () => {
   return (
     <div className="relative shadow w-fit py-7 pl-7 pr-3">
       <NavLinks isOpen={isOpen} />
+
       <Icon
         purpose={isOpen ? "left" : "right"}
         onClick={() => setIsOpen(!isOpen)}

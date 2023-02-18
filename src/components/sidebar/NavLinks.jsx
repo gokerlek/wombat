@@ -14,7 +14,7 @@ const NavLinks = ({ isOpen }) => {
     });
 
   const labelClassName = (disabled) =>
-    clsx(" h-full w-full items-center flex w-40");
+    clsx(" h-full w-full items-center flex min-w-[160px]");
 
   return (
     <ul className="flex flex-col gap-7">

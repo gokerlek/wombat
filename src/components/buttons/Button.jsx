@@ -34,53 +34,10 @@ const Button = ({
   };
 
   const containerClassName = {
-    white: clsx(
-      "flex items-center justify-center bg-white rounded-md p-2 border-card border",
-      " text-primary font-medium cursor-pointer text-center text-sm",
-      "hover:bg-pGray-100 w-fit min-w-[100px]",
-      disabledClassName
-    ),
-
-    "white-border": clsx(
-      "flex items-center justify-center hover:bg-white rounded p-1 border-card border gap-2",
-      " text-white hover:text-pGray-900  cursor-pointer text-center text-sm",
-      " w-fit min-w-[100px]",
-      disabledClassName
-    ),
-
-    "black-border": clsx(
-      "flex items-center justify-center bg-white rounded p-1 border-gray-400 border gap-2",
-      "text-pGray-900  cursor-pointer text-center text-sm",
-      " w-fit min-w-[100px] hover:bg-pGray-100",
-      disabledClassName
-    ),
-
-    black: clsx(
-      "flex items-center justify-center bg-pGray-900 rounded p-2 h-10 gap-2",
-      " text-white font-medium cursor-pointer text-center text-sm",
-      " hover:bg-pGray-700",
-      disabledClassName,
-      {
-        "w-full": !fit,
-        "w-fit": fit,
-      }
-    ),
-
-    red: clsx(
-      "flex items-center justify-start bg-pRed-700  p-2 h-10 gap-2",
-      " text-white font-medium cursor-pointer text-center text-xs",
-      " hover:bg-pRed-400",
-      disabledClassName,
-      {
-        "w-full": !fit,
-        "w-fit": fit,
-      }
-    ),
-
-    "soft red": clsx(
-      "flex items-center justify-center bg-pRed-500  p-2 h-11 gap-2 rounded-lg",
-      " text-white font-medium cursor-pointer text-center text-sm",
-      " hover:bg-pRed-400",
+    cyan: clsx(
+      "flex items-center justify-center bg-cyan-500 rounded-md px-4  gap-2 capitalize",
+      " text-white font-normal cursor-pointer text-center text-sm",
+      " hover:bg-cyan-600",
       disabledClassName,
       {
         "w-full": !fit,
@@ -91,7 +48,7 @@ const Button = ({
 
   return (
     <div
-      style={{ height: height ?? null }}
+      style={{ height: height ?? 40 }}
       className={className ?? containerClassName[purpose]}
       onClick={disabled ? null : onClick}
     >

@@ -28,6 +28,7 @@ import { ReactComponent as SettingsSolid } from "../assets/icons/sidebar/Setting
 
 import { ReactComponent as Bell } from "../assets/icons/header/Bell.svg";
 import { ReactComponent as Calendar } from "../assets/icons/header/Calendar.svg";
+import { ReactComponent as Plus } from "../assets/icons/header/Plus.svg";
 
 const iconList = (purpose, { width, height, color }) => {
   switch (purpose) {
@@ -87,6 +88,8 @@ const iconList = (purpose, { width, height, color }) => {
       return <Bell />;
     case "calendar":
       return <Calendar />;
+    case "plus":
+      return <Plus />;
 
     default:
       return null;

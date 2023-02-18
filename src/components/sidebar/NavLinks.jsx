@@ -6,7 +6,7 @@ import { sidebarItems } from "../../constants.js";
 
 const NavLinks = ({ isOpen }) => {
   const linkBaseClassName = (isActive, disabled) =>
-    clsx(" flex flex-row items-center justify-start gap-2   capitalize ", {
+    clsx(" flex flex-row items-center justify-start gap-2 pr-4 capitalize ", {
       "text-cyan-600 font-semibold": isActive,
       "text-gray-800": !isActive,
       "hover:text-cyan-600 hover:font-semibold cursor-pointer": !disabled,
@@ -14,7 +14,7 @@ const NavLinks = ({ isOpen }) => {
     });
 
   const labelClassName = (disabled) =>
-    clsx(" h-full w-full items-center flex min-w-[160px]");
+    clsx(" h-full w-full items-center flex min-w-[145px]");
 
   return (
     <ul className="flex flex-col gap-7">

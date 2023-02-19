@@ -7,49 +7,64 @@
  *   ];
  */
 
-import { Menu } from "@headlessui/react";
+import { Listbox } from "@headlessui/react";
 import { Icon, Text } from "../index.js";
 import clsx from "clsx";
+import { Fragment, useState } from "react";
 
-const Dropdown = ({ options, big = true }) => {
+const Dropdown = ({ options, status }) => {
+  const [selectedItem, setSelectedItem] = useState(status);
+  console.log(selectedItem?.label);
+
   return (
-    <Menu as="div" className="relative h-full">
-      <Menu.Button className="h-full">
+    <Listbox
+      value={selectedItem}
+      onChange={setSelectedItem}
+      as="div"
+      by={"label"}
+      className={clsx("relative h-10 w-fit bg-cyan-500 rounded-lg", {
+        "bg-cyan-500": selectedItem?.label === "published",
+        "bg-rose-500": selectedItem?.label === "closed",
+        "bg-gray-400": selectedItem?.label === "archived",
+      })}
+    >
+      <Listbox.Button className="flex  items-center h-full p-3 text-white">
         <Icon
-          className="flex h-full items-center cursor-pointer"
-          purpose={big ? "ellipsis-20" : "ellipsis"}
+          className="flex h-full items-center cursor-pointer text-white"
+          purpose={options[0]?.icon ?? "more"}
         />
-      </Menu.Button>
+        <Text className="px-2 pr-3 text-white border-r border-white capitalize">
+          {selectedItem?.label}
+        </Text>
 
-      <Menu.Items className="absolute -right-2 mt-2 w-44 origin-top-right border border-border rounded bg-white shadow-card z-10">
+        <Icon purpose={open ? "up" : "down"} className="pl-2" />
+      </Listbox.Button>
+
+      <Listbox.Options className="absolute -right-2 mt-2 w-44 origin-top-right border border-border rounded-lg bg-white shadow-lg z-10">
         <div className="px-2 py-3 ">
           {options.map((option, index) => (
-            <Menu.Item key={index}>
-              {({ active }) => (
+            <Listbox.Option key={option.id} value={option} as={Fragment}>
+              {({ active, selected }) => (
                 <button
                   onClick={option?.action}
                   className={clsx(
                     {
-                      "bg-tGray-100 text-tGray-700":
-                        !option?.label.includes("Delete") && active,
-                      "bg-tGray-100 text-tRed-500":
-                        option?.label.includes("Delete") && active,
-                      "text-tGray-500":
-                        !option?.label.includes("Delete") && !active,
-                      "text-tRed-500":
-                        option?.label.includes("Delete") && !active,
+                      "bg-gray-100 text-gray-700": active || selected,
+
+                      "text-gray-500": !active,
                     },
-                    "group flex w-full items-center rounded px-2 py-2 text-xs capitalize"
+                    "group flex w-full items-center rounded px-2 py-2 text-xs capitalize gap-2"
                   )}
                 >
+                  <Icon purpose={option?.icon ?? "more"} />
                   <Text>{option?.label}</Text>
                 </button>
               )}
-            </Menu.Item>
+            </Listbox.Option>
           ))}
         </div>
-      </Menu.Items>
-    </Menu>
+      </Listbox.Options>
+    </Listbox>
   );
 };
 

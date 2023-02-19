@@ -70,7 +70,7 @@ const Tabs = () => {
         id: Math.floor(Math.random() * 1000) + 1,
         title: "New Job",
         priority: ["high", "medium", "low"][Math.floor(Math.random() * 3)],
-        isFallowed: Math.random() < 0.5,
+        isFollowed: Math.random() < 0.5,
         status: ["published", "archived", "closed"][
           Math.floor(Math.random() * 3)
         ],

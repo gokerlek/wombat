@@ -43,6 +43,10 @@ import { ReactComponent as Salary } from "../assets/icons/job-card/Salary.svg";
 import { ReactComponent as User } from "../assets/icons/job-card/User.svg";
 import { ReactComponent as Followed } from "../assets/icons/job-card/Followed.svg";
 
+import { ReactComponent as Check } from "../assets/icons/status/Check.svg";
+import { ReactComponent as Cross } from "../assets/icons/status/Cross.svg";
+import { ReactComponent as Archived } from "../assets/icons/status/Archived.svg";
+
 const iconList = (purpose, { width, height, color }) => {
   switch (purpose) {
     //LOGO
@@ -129,6 +133,14 @@ const iconList = (purpose, { width, height, color }) => {
       return <User />;
     case "followed":
       return <Followed />;
+
+    //STATUS
+    case "check":
+      return <Check />;
+    case "cross":
+      return <Cross />;
+    case "archived":
+      return <Archived />;
 
     default:
       return null;

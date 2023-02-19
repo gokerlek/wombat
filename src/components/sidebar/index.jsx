@@ -5,7 +5,7 @@ import { Icon } from "../index.js";
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(true);
   return (
-    <div className="relative shadow w-fit py-7 pl-7 pr-3">
+    <div className="relative shadow w-fit py-7 pl-7 pr-3 bg-white">
       <NavLinks isOpen={isOpen} />
 
       <Icon

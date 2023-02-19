@@ -34,7 +34,14 @@ export default function SearchBar() {
             displayValue={(person) => person.name}
             onChange={(event) => setQuery(event.target.value)}
           />
-          <Combobox.Button className="absolute inset-y-0 right-0 flex items-center pr-2"></Combobox.Button>
+          <Combobox.Button className="absolute inset-y-0 right-0 flex items-center pr-2">
+            {({ open }) => (
+              <Icon
+                purpose={open ? "up" : "down"}
+                className="absolute top-5 right-5 transform -translate-y-1/2"
+              />
+            )}
+          </Combobox.Button>
         </div>
         <Transition
           as={Fragment}
@@ -68,12 +75,6 @@ export default function SearchBar() {
                       >
                         {person.name}
                       </span>
-                      {selected ? (
-                        <Icon
-                          purpose={open ? "up" : "down"}
-                          className="absolute top-5 right-5 transform -translate-y-1/2"
-                        />
-                      ) : null}
                     </>
                   )}
                 </Combobox.Option>

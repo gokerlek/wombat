@@ -5,7 +5,7 @@ import SearchBar from "../search/index.jsx";
 
 const Header = () => {
   return (
-    <div className=" h-[84px] bg-white shadow-sm px-7 flex items-center justify-between">
+    <div className=" h-[84px] bg-white px-7 flex items-center justify-between border-b border-gray-100">
       <div className="font-semibold text-4xl">WOMBAT</div>
 
       <div className="flex flex-row items-center gap-4 ">

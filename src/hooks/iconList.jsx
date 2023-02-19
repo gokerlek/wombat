@@ -1,6 +1,7 @@
 import React from "react";
 
 import { ReactComponent as Loading } from "../assets/icons/Loading.svg";
+import { ReactComponent as Buildings } from "../assets/icons/Buildings.svg";
 
 import { ReactComponent as Paketus } from "../assets/icons/logo/Paketus.svg";
 
@@ -28,7 +29,10 @@ import { ReactComponent as SettingsSolid } from "../assets/icons/sidebar/Setting
 
 import { ReactComponent as Bell } from "../assets/icons/header/Bell.svg";
 import { ReactComponent as Calendar } from "../assets/icons/header/Calendar.svg";
-import { ReactComponent as Plus } from "../assets/icons/header/Plus.svg";
+
+import { ReactComponent as Plus } from "../assets/icons/buttons/Plus.svg";
+import { ReactComponent as Reorder } from "../assets/icons/buttons/Reorder.svg";
+import { ReactComponent as Filter } from "../assets/icons/buttons/Filter.svg";
 
 const iconList = (purpose, { width, height, color }) => {
   switch (purpose) {
@@ -38,6 +42,8 @@ const iconList = (purpose, { width, height, color }) => {
 
     case "loading":
       return <Loading />;
+    case "buildings":
+      return <Buildings />;
 
     //ARROWS
     case "down-bold":
@@ -88,8 +94,14 @@ const iconList = (purpose, { width, height, color }) => {
       return <Bell />;
     case "calendar":
       return <Calendar />;
+
+    // BUTTONS
     case "plus":
       return <Plus />;
+    case "reorder":
+      return <Reorder />;
+    case "filter":
+      return <Filter />;
 
     default:
       return null;

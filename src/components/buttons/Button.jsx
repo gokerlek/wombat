@@ -30,19 +30,41 @@ const Button = ({
   };
 
   const disabledClassName = {
-    " cursor-not-allowed hover:scale-100": disabled,
+    " cursor-not-allowed": disabled,
+    "cursor-pointer": !disabled,
   };
+
+  const widthClassName = {
+    "w-full": !fit,
+    "w-fit": fit,
+  };
+
+  const baseContainerClassName = clsx(
+    "flex items-center justify-center  rounded-md px-4  gap-2 capitalize",
+    disabledClassName,
+    widthClassName
+  );
 
   const containerClassName = {
     cyan: clsx(
-      "flex items-center justify-center bg-cyan-500 rounded-md px-4  gap-2 capitalize",
-      " text-white font-normal cursor-pointer text-center text-sm",
-      " hover:bg-cyan-600",
-      disabledClassName,
-      {
-        "w-full": !fit,
-        "w-fit": fit,
-      }
+      baseContainerClassName,
+      "font-normal  text-center text-sm",
+      "text-white",
+      "bg-cyan-500 hover:bg-cyan-600"
+    ),
+    "cyan-border": clsx(
+      baseContainerClassName,
+      "font-medium  text-center text-sm",
+      "text-white",
+      "bg-cyan-500 hover:bg-cyan-600",
+      "border border-cyan-600"
+    ),
+    "white-border": clsx(
+      baseContainerClassName,
+      "font-medium  text-center text-sm",
+      "text-gray-900",
+      "bg-white hover:bg-gray-50",
+      "border border-gray-200"
     ),
   };
 

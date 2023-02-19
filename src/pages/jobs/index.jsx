@@ -1,10 +1,10 @@
 import JobsList from "../../components/jobs/JobsList.jsx";
-import Index from "../../components/jobs/jobs-header/index.jsx";
+import JobsHeader from "../../components/jobs/jobs-header";
 
 const Jobs = () => {
   return (
     <>
-      <Index />
+      <JobsHeader />
       <JobsList />
     </>
   );

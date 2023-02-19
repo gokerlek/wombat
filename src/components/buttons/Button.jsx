@@ -52,14 +52,14 @@ const Button = ({
       "text-white",
       "bg-cyan-500 hover:bg-cyan-600"
     ),
-    "cyan-border": clsx(
+    cyan_border: clsx(
       baseContainerClassName,
       "font-medium  text-center text-sm",
       "text-white",
       "bg-cyan-500 hover:bg-cyan-600",
       "border border-cyan-600"
     ),
-    "white-border": clsx(
+    white_border: clsx(
       baseContainerClassName,
       "font-medium  text-center text-sm",
       "text-gray-900",

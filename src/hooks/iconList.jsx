@@ -3,7 +3,8 @@ import React from "react";
 import { ReactComponent as Loading } from "../assets/icons/Loading.svg";
 import { ReactComponent as Buildings } from "../assets/icons/Buildings.svg";
 
-import { ReactComponent as Paketus } from "../assets/icons/logo/Paketus.svg";
+import { ReactComponent as Wombat } from "../assets/icons/logo/Wombat.svg";
+import { ReactComponent as Hamburger } from "../assets/icons/Hamburger.svg";
 
 import { ReactComponent as DownBold } from "../assets/icons/arrows/DownBold.svg";
 import { ReactComponent as Left } from "../assets/icons/arrows/Left.svg";
@@ -34,11 +35,21 @@ import { ReactComponent as Plus } from "../assets/icons/buttons/Plus.svg";
 import { ReactComponent as Reorder } from "../assets/icons/buttons/Reorder.svg";
 import { ReactComponent as Filter } from "../assets/icons/buttons/Filter.svg";
 
+import { ReactComponent as Stars } from "../assets/icons/priority/Stars.svg";
+
+import { ReactComponent as Clock } from "../assets/icons/job-card/Clock.svg";
+import { ReactComponent as Marker } from "../assets/icons/job-card/Marker.svg";
+import { ReactComponent as Salary } from "../assets/icons/job-card/Salary.svg";
+import { ReactComponent as User } from "../assets/icons/job-card/User.svg";
+import { ReactComponent as Followed } from "../assets/icons/job-card/Followed.svg";
+
 const iconList = (purpose, { width, height, color }) => {
   switch (purpose) {
     //LOGO
     case "logo":
-      return <Paketus />;
+      return <Wombat />;
+    case "hamburger":
+      return <Hamburger />;
 
     case "loading":
       return <Loading />;
@@ -102,6 +113,22 @@ const iconList = (purpose, { width, height, color }) => {
       return <Reorder />;
     case "filter":
       return <Filter />;
+
+    //PRIORITY
+    case "stars":
+      return <Stars />;
+
+    //JOB_CARD
+    case "clock":
+      return <Clock />;
+    case "marker":
+      return <Marker />;
+    case "salary":
+      return <Salary />;
+    case "recruiter":
+      return <User />;
+    case "followed":
+      return <Followed />;
 
     default:
       return null;

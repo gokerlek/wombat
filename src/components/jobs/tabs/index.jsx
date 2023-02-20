@@ -2,7 +2,7 @@ import { Tab } from "@headlessui/react";
 import clsx from "clsx";
 import { Text } from "../../index.js";
 import JobsCard from "../../cards/Jobs/index.jsx";
-import addRandomJobs from "../../../dummyData.jsx";
+import {addRandomJobs} from "../../../dummyData.jsx";
 
 const Tabs = () => {
   const tabs = ["all", "followed", "closed", "archived"];

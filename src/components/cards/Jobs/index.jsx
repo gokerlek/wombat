@@ -6,7 +6,7 @@ const JobsCard = ({ jobs }) => {
   return (
     <div className={clsx("rounded-lg bg-white p-7")}>
       <JobsCardHeader data={jobs} />
-      <CandidatesScore data={jobs.candidate_details} />
+      <CandidatesScore data={jobs?.candidate_details} />
     </div>
   );
 };

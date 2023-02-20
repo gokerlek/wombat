@@ -47,7 +47,7 @@ import { ReactComponent as Check } from "../assets/icons/status/Check.svg";
 import { ReactComponent as Cross } from "../assets/icons/status/Cross.svg";
 import { ReactComponent as Archived } from "../assets/icons/status/Archived.svg";
 
-const iconList = (purpose, { width, height, color }) => {
+const iconList = (purpose, { custom }) => {
   switch (purpose) {
     //LOGO
     case "logo":
@@ -132,7 +132,7 @@ const iconList = (purpose, { width, height, color }) => {
     case "recruiter":
       return <User />;
     case "followed":
-      return <Followed />;
+      return <Followed className={custom} />;
 
     //STATUS
     case "check":

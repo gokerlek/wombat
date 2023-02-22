@@ -1,6 +1,6 @@
-import { Fragment, useState } from "react";
+import { Fragment, useCallback, useState } from "react";
 import { Combobox, Transition } from "@headlessui/react";
-import { Icon } from "../index.js";
+import { Icon, Text } from "../index.js";
 import clsx from "clsx";
 
 const people = [
@@ -22,8 +22,13 @@ const people = [
 ];
 
 export default function SearchBar() {
-  const [selected, setSelected] = useState();
+  const [selected, setSelected] = useState({});
   const [query, setQuery] = useState("");
+
+  const reset = useCallback(() => {
+    setSelected({});
+    setQuery("");
+  }, [setQuery, setSelected]);
 
   const filteredPeople =
     query === ""
@@ -34,7 +39,6 @@ export default function SearchBar() {
             .replace(/\s+/g, "")
             .includes(query.toLowerCase().replace(/\s+/g, ""))
         );
-
   return (
     <Combobox value={selected} onChange={setSelected}>
       {({ open }) => (
@@ -47,6 +51,13 @@ export default function SearchBar() {
               }
             )}
           >
+            {!!selected?.name && (
+              <Icon
+                purpose="cross"
+                className="px-4 absolute right-2"
+                onClick={reset}
+              />
+            )}
             <Icon purpose="search" className="px-4" />
             <Combobox.Input
               className="w-full border-none py-2 pl-0  h-full text-sm leading-5 text-gray-500 focus:ring-0 bg-transparent"
@@ -79,13 +90,13 @@ export default function SearchBar() {
                   >
                     {({ selected }) => (
                       <>
-                        <span
+                        <Text
                           className={`block truncate ${
                             selected ? "font-medium" : "font-normal"
                           }`}
                         >
-                          {person.name}
-                        </span>
+                          {person.name ?? "Search"}
+                        </Text>
                       </>
                     )}
                   </Combobox.Option>

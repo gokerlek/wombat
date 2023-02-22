@@ -14,7 +14,6 @@ import { Fragment, useState } from "react";
 
 const Dropdown = ({ options, status }) => {
   const [selectedItem, setSelectedItem] = useState(status);
-  console.log(selectedItem?.label);
 
   return (
     <Listbox
@@ -42,7 +41,7 @@ const Dropdown = ({ options, status }) => {
 
       <Listbox.Options className="absolute -right-2 mt-2 w-44 origin-top-right border border-border rounded-lg bg-white shadow-lg z-10">
         <div className="px-2 py-3 ">
-          {options.map((option, index) => (
+          {options.map((option) => (
             <Listbox.Option key={option.id} value={option} as={Fragment}>
               {({ active, selected }) => (
                 <button

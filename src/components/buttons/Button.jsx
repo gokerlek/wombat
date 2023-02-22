@@ -40,7 +40,7 @@ const Button = ({
   };
 
   const baseContainerClassName = clsx(
-    "flex items-center justify-center  rounded-md px-4  gap-2 capitalize",
+    "flex items-center justify-center  rounded-md px-4  gap-2 capitalize min-w-fit",
     disabledClassName,
     widthClassName
   );
@@ -65,6 +65,12 @@ const Button = ({
       "text-gray-900",
       "bg-white hover:bg-gray-50",
       "border border-gray-200"
+    ),
+    gray: clsx(
+      baseContainerClassName,
+      "font-medium  text-center text-sm",
+      "text-gray-900",
+      "bg-gray-100 hover:bg-gray-200"
     ),
   };
 

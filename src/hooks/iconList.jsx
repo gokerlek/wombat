@@ -2,6 +2,7 @@ import React from "react";
 
 import { ReactComponent as Loading } from "../assets/icons/Loading.svg";
 import { ReactComponent as Buildings } from "../assets/icons/Buildings.svg";
+import { ReactComponent as Search } from "../assets/icons/Search.svg";
 
 import { ReactComponent as Wombat } from "../assets/icons/logo/Wombat.svg";
 import { ReactComponent as Hamburger } from "../assets/icons/Hamburger.svg";
@@ -54,6 +55,8 @@ const iconList = (purpose, { custom }) => {
       return <Wombat />;
     case "hamburger":
       return <Hamburger />;
+    case "search":
+      return <Search />;
 
     case "loading":
       return <Loading />;

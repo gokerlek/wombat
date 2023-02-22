@@ -1,7 +1,7 @@
 import { useCallback, useMemo, useState } from "react";
 
-const UseToggle = () => {
-  const [status, setStatus] = useState(false);
+const UseToggle = (initial) => {
+  const [status, setStatus] = useState(initial ?? false);
 
   const toggleStatus = useCallback(() => {
     setStatus((prev) => !prev);

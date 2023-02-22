@@ -1,11 +1,12 @@
 import Icon from "../../Icon.jsx";
+import Text from "../../Text.jsx";
 
 const JobsInfo = ({ data }) => {
   const { working_time_model, location, salary, closing_date, recruiter } =
     data ?? {};
 
   return (
-    <div className="flex flex-row items-center gap-4">
+    <div className="flex flex-row items-center gap-4 min-w-fit flex-wrap">
       <div className="flex w-fit items-center gap-2.5 capitalize">
         <Icon purpose="clock" />
         <div className="text-xs font-normal text-gray-900">
@@ -22,7 +23,13 @@ const JobsInfo = ({ data }) => {
       </div>
       <div className="flex w-fit items-center gap-2.5 capitalize">
         <Icon className="w-3.5" purpose="calendar" />
-        <div className="text-xs font-normal text-gray-900">{closing_date}</div>
+        <Text
+          searchTerms={"**date**"}
+          changeTerms={closing_date}
+          className="text-xs font-normal text-gray-900"
+        >
+          closing on
+        </Text>
       </div>
       <div className="flex w-fit items-center gap-2.5 capitalize">
         <Icon purpose="recruiter" />

@@ -2,7 +2,8 @@ import { Tab } from "@headlessui/react";
 import clsx from "clsx";
 import { Text } from "../../index.js";
 import JobsCard from "../../cards/Jobs/index.jsx";
-import {addRandomJobs} from "../../../dummyData.jsx";
+import { addRandomJobs } from "../../../dummyData.jsx";
+import ListActions from "../ListActions.jsx";
 
 const Tabs = () => {
   const tabs = ["all", "followed", "closed", "archived"];
@@ -25,11 +26,11 @@ const Tabs = () => {
             key={category}
             className={({ selected }) =>
               clsx(
-                "w-full text-sm font-normal capitalize",
+                "w-full text-sm font-normal capitalize border-b-2",
                 " ring-offset-none focus:outline-none",
                 {
-                  "text-cyan-500 border-b-2 border-cyan-500": selected,
-                  "text-gray-900": !selected,
+                  "text-cyan-500  border-cyan-500 font-semibold": selected,
+                  "text-gray-900 border-gray-200": !selected,
                 }
               )
             }
@@ -38,7 +39,10 @@ const Tabs = () => {
           </Tab>
         ))}
       </Tab.List>
-      <div className="mt-7 h-[calc(100vh-330px)] no-scrollbar  overflow-y-auto  rounded-lg">
+
+      <ListActions />
+
+      <div className=" h-[calc(100vh-330px)] no-scrollbar  overflow-y-auto  rounded-lg">
         <Tab.Panels>
           <Tab.Panel className="flex flex-col gap-3.5">
             {jobs.map((job) => (

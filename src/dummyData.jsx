@@ -14,7 +14,7 @@ export function addRandomJobs(numJobs, jobs) {
       location: ["remote", "hybrid", "office"][Math.floor(Math.random() * 3)],
       salary: Math.floor(Math.random() * 5000) + 1000 + "$",
       closing_date: "2022-12-31",
-      recruiter: "Jane Doe",
+      recruiter: "Jane Doe g sg  gfb g",
       candidate_details: {
         total: Math.floor(Math.random() * 20) + 1,
         news: Math.floor(Math.random() * 5) + 1,

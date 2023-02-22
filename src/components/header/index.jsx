@@ -16,8 +16,8 @@ const Header = ({ toggleStatus }) => {
         <Button purpose="cyan" fit rightIcon="plus" height={48}>
           create new job
         </Button>
-        <Icon className="w-6" purpose="calendar" />
-        <Icon purpose="bell" />
+        <Icon className="w-6" purpose="calendar" onClick={() => {}} />
+        <Icon purpose="bell" onClick={() => {}} />
         <div className="w-[38px] h-[38px] rounded-full bg-cyan-500"></div>
       </div>
     </div>

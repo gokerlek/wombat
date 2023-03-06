@@ -2,7 +2,7 @@ import Text from "../Text.jsx";
 import { Button } from "../index.js";
 const ListActions = ({ count }) => {
   return (
-    <div className="flex justify-between items-center px-5 my-3.5">
+    <div className="flex justify-between items-center px-5 my-3.5  w-[calc(100vw-288px)] ">
       <Text
         markdown
         className="text-gray-900 text-sm capitalize"

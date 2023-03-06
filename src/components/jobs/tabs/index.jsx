@@ -5,8 +5,17 @@ import JobsCard from "../../cards/Jobs/index.jsx";
 import { addRandomJobs } from "../../../dummyData.jsx";
 import ListActions from "../ListActions.jsx";
 
+import ReactGridLayout from "react-grid-layout";
+import "react-grid-layout/css/styles.css";
+import "react-resizable/css/styles.css";
+import useWindowSize from "../../../hooks/useWindowsSize.jsx";
+import { useState } from "react";
+
 const Tabs = () => {
+  const { width } = useWindowSize();
+  const minWidth = width < 1000 ? 1000 : width - 280;
   const tabs = ["all", "followed", "closed", "archived"];
+  const [is_draggable, setDraggable] = useState(false);
 
   let jobs = [];
 
@@ -20,7 +29,7 @@ const Tabs = () => {
 
   return (
     <Tab.Group>
-      <Tab.List className="flex bg-white px-7  h-[46px] rounded-b-lg">
+      <Tab.List className="flex bg-white px-7  h-[46px] rounded-b-lg  w-[calc(100vw-288px)] ">
         {tabs.map((category) => (
           <Tab
             key={category}
@@ -42,29 +51,62 @@ const Tabs = () => {
 
       <ListActions />
 
-      <div className=" h-[calc(100vh-330px)] no-scrollbar  overflow-y-auto  rounded-lg">
-        <Tab.Panels>
-          <Tab.Panel className="flex flex-col gap-3.5">
-            {jobs.map((job) => (
-              <JobsCard key={job.id} jobs={job} />
-            ))}
-          </Tab.Panel>
-          <Tab.Panel className="flex flex-col gap-3.5">
-            {fallowedJobs.map((job) => (
-              <JobsCard key={job.id} jobs={job} />
-            ))}
-          </Tab.Panel>
-          <Tab.Panel className="flex flex-col gap-3.5">
-            {closedJobs.map((job) => (
-              <JobsCard key={job.id} jobs={job} />
-            ))}
-          </Tab.Panel>
-          <Tab.Panel className="flex flex-col gap-3.5">
-            {archivedJobs.map((job) => (
-              <JobsCard key={job.id} jobs={job} />
-            ))}
-          </Tab.Panel>
-        </Tab.Panels>
+      <div className=" h-[calc(100vh-330px)] no-scrollbar   rounded-lg overflow-scroll w-[calc(100vw-288px)] overflow-hidden">
+        <div className="min-w-[800px] mb-7">
+          <Tab.Panels>
+            <Tab.Panel className="flex flex-col gap-3.5">
+              <ReactGridLayout
+                layouts={jobs.map((job, index) => {
+                  return {
+                    key: job.id,
+                    i: job.id,
+                    x: 0,
+                    y: index,
+                    w: 1,
+                    h: 1,
+                    minW: 1,
+                    minH: 1,
+                  };
+                })}
+                onLayoutChange={(layout, layouts) => {
+                  console.log("onLayoutChange", layout, layouts);
+                }}
+                className="layout"
+                width={minWidth}
+                rowHeight={168}
+                cols={1}
+                autoSize={true}
+                isResizable={false}
+                isDraggable={is_draggable}
+              >
+                {jobs.map((job) => (
+                  <div className="  " key={job.id}>
+                    <JobsCard
+                      key={job.id}
+                      jobs={job}
+                      setDraggable={setDraggable}
+                    />
+                  </div>
+                ))}
+              </ReactGridLayout>
+            </Tab.Panel>
+            <Tab.Panel className="flex flex-col gap-3.5">
+              {fallowedJobs.map((job) => (
+                <JobsCard key={job.id} jobs={job} />
+              ))}
+            </Tab.Panel>
+            <Tab.Panel className="flex flex-col gap-3.5">
+              {closedJobs.map((job) => (
+                <JobsCard key={job.id} jobs={job} />
+              ))}
+            </Tab.Panel>
+            <Tab.Panel className="flex flex-col gap-3.5">
+              {archivedJobs.map((job) => (
+                <JobsCard key={job.id} jobs={job} />
+              ))}
+            </Tab.Panel>
+          </Tab.Panels>
+        </div>
       </div>
     </Tab.Group>
   );

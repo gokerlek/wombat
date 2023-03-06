@@ -25,10 +25,18 @@ const Icon = ({
   className,
   custom,
   onClick,
+  onMouseDown,
+  onMouseUp,
 }) => {
   return (
     <div
-      className={clsx(className, { "cursor-pointer": !!onClick })}
+      className={clsx(className, {
+        "cursor-pointer": !!onClick,
+        "cursor-grab": !!onMouseDown,
+        "cursor-grabbing": !!onMouseUp,
+      })}
+      onMouseDown={onMouseDown}
+      onMouseUp={onMouseUp}
       onClick={onClick}
       style={{
         width: width,

@@ -43,6 +43,7 @@ import { ReactComponent as Marker } from "../assets/icons/job-card/Marker.svg";
 import { ReactComponent as Salary } from "../assets/icons/job-card/Salary.svg";
 import { ReactComponent as User } from "../assets/icons/job-card/User.svg";
 import { ReactComponent as Followed } from "../assets/icons/job-card/Followed.svg";
+import { ReactComponent as Drag } from "../assets/icons/job-card/Drag.svg";
 
 import { ReactComponent as Check } from "../assets/icons/status/Check.svg";
 import { ReactComponent as Cross } from "../assets/icons/status/Cross.svg";
@@ -136,6 +137,8 @@ const iconList = (purpose, { custom }) => {
       return <User />;
     case "followed":
       return <Followed className={custom} />;
+    case "drag":
+      return <Drag />;
 
     //STATUS
     case "check":

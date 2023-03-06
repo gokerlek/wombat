@@ -3,7 +3,7 @@ import JobsHeader from "../../components/jobs/jobs-header";
 
 const Jobs = () => {
   return (
-    <div className="w-full min-w-[950px]">
+    <div className="w-full">
       <JobsHeader />
       <JobsList />
     </div>

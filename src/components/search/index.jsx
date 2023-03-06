@@ -42,10 +42,10 @@ export default function SearchBar() {
   return (
     <Combobox value={selected} onChange={setSelected}>
       {({ open }) => (
-        <div className="relative">
+        <div className="relative max-w-[400px] w-full">
           <div
             className={clsx(
-              "relative flex items-center bg-gray-50 w-[400px] min-w-[200px] cursor-default overflow-hidden rounded-lg  h-[52px] text-left  focus:outline-none ",
+              "relative flex items-center bg-gray-50   cursor-default overflow-hidden rounded-lg  h-[52px] text-left  focus:outline-none ",
               {
                 "shadow-lg": open,
               }

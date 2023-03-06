@@ -12,7 +12,7 @@ const MainLayout = () => {
       <div className="flex flex-row w-screen h-[calc(100vh-84px)]">
         <Sidebar isOpen={status} />
 
-        <div className="w-full  p-7 rounded-t-2xl overflow-x-auto">
+        <div className="w-full  p-7 rounded-t-2xl ">
           <Outlet />
         </div>
       </div>

@@ -1,21 +1,23 @@
 import clsx from "clsx";
 import JobsCardHeader from "./JobsCardHeader.jsx";
 import CandidatesScore from "./CandidatesScore.jsx";
-import Icon from "../../Icon.jsx";
+import { useNavigate } from "react-router-dom";
+import paths from "../../../paths.js";
 
-const JobsCard = ({ jobs, setDraggable }) => {
+const JobsCard = ({ jobs }) => {
+  const navigate = useNavigate();
+
+  const handleCardClick = () => {
+    navigate(paths.jobs + "/" + jobs?.id);
+  };
+
   return (
     <div
+      onClick={handleCardClick}
       className={clsx(
-        "relative rounded-lg bg-white hover:bg-gray-50 p-7 my-10 cursor-pointer border border-gray-200"
+        "relative rounded-lg bg-white hover:bg-gray-50 p-7  cursor-pointer border border-gray-200"
       )}
     >
-      <Icon
-        className="absolute top-1 right-1/2"
-        onMouseDown={() => setDraggable(true)}
-        onMouseUp={() => setDraggable(false)}
-        purpose="drag"
-      />
       <JobsCardHeader data={jobs} />
       <CandidatesScore data={jobs?.candidate_details} />
     </div>

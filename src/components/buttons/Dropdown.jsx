@@ -11,6 +11,7 @@ import { Listbox } from "@headlessui/react";
 import { Icon, Text } from "../index.js";
 import clsx from "clsx";
 import { Fragment, useState } from "react";
+import { JOB_STATUS } from "../../constants.js";
 
 const Dropdown = ({ options, status }) => {
   const [selectedItem, setSelectedItem] = useState(status);
@@ -22,12 +23,15 @@ const Dropdown = ({ options, status }) => {
       as="div"
       by={"label"}
       className={clsx("relative h-10 w-fit bg-cyan-500 rounded-lg", {
-        "bg-cyan-500": selectedItem?.label === "published",
-        "bg-rose-500": selectedItem?.label === "closed",
-        "bg-gray-400": selectedItem?.label === "archived",
+        "bg-cyan-500": selectedItem?.label === JOB_STATUS.PUBLISHED,
+        "bg-rose-500": selectedItem?.label === JOB_STATUS.CLOSED,
+        "bg-gray-400": selectedItem?.label === JOB_STATUS.ARCHIVED,
       })}
     >
-      <Listbox.Button className="flex  items-center h-full p-3 text-white">
+      <Listbox.Button
+        onClick={(e) => e.stopPropagation()}
+        className="flex  items-center h-full p-3 text-white"
+      >
         <Icon
           className="flex h-full items-center cursor-pointer text-white"
           purpose={options[0]?.icon ?? "more"}

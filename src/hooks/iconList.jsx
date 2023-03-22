@@ -3,6 +3,7 @@ import React from "react";
 import { ReactComponent as Loading } from "../assets/icons/Loading.svg";
 import { ReactComponent as Buildings } from "../assets/icons/Buildings.svg";
 import { ReactComponent as Search } from "../assets/icons/Search.svg";
+import { ReactComponent as Dot } from "../assets/icons/Dot.svg";
 
 import { ReactComponent as Wombat } from "../assets/icons/logo/Wombat.svg";
 import { ReactComponent as Hamburger } from "../assets/icons/Hamburger.svg";
@@ -35,6 +36,8 @@ import { ReactComponent as Calendar } from "../assets/icons/header/Calendar.svg"
 import { ReactComponent as Plus } from "../assets/icons/buttons/Plus.svg";
 import { ReactComponent as Reorder } from "../assets/icons/buttons/Reorder.svg";
 import { ReactComponent as Filter } from "../assets/icons/buttons/Filter.svg";
+import { ReactComponent as Play } from "../assets/icons/buttons/Play.svg";
+import { ReactComponent as Disqualify } from "../assets/icons/buttons/Disqualify.svg";
 
 import { ReactComponent as Stars } from "../assets/icons/priority/Stars.svg";
 
@@ -63,6 +66,8 @@ const iconList = (purpose, { custom }) => {
       return <Loading />;
     case "buildings":
       return <Buildings />;
+    case "dot":
+      return <Dot />;
 
     //ARROWS
     case "down-bold":
@@ -121,6 +126,10 @@ const iconList = (purpose, { custom }) => {
       return <Reorder />;
     case "filter":
       return <Filter />;
+    case "play":
+      return <Play />;
+    case "disqualify":
+      return <Disqualify />;
 
     //PRIORITY
     case "stars":

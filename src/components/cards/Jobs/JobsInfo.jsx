@@ -27,6 +27,7 @@ const JobsInfo = ({ data }) => {
           searchTerms={"**date**"}
           changeTerms={closing_date}
           className="text-xs font-normal text-gray-900"
+          markdown
         >
           closing on
         </Text>

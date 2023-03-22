@@ -72,6 +72,12 @@ const Button = ({
       "text-gray-900",
       "bg-gray-100 hover:bg-gray-200"
     ),
+    text: clsx(
+      baseContainerClassName,
+      "font-normal  text-center text-xs",
+      "text-gray-900",
+      "bg-transparent hover:text-cyan-600"
+    ),
   };
 
   return (

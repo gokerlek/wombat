@@ -2,9 +2,16 @@ import { useTranslation } from "react-i18next";
 import ReactMarkdown from "react-markdown";
 import useReplacedText from "../hooks/useReplacedText.jsx";
 
-const Text = ({ children, noTranslate, markdown, className, onClick,searchTerms, changeTerms }) => {
+const Text = ({
+  children,
+  noTranslate,
+  markdown,
+  className,
+  onClick,
+  searchTerms,
+  changeTerms,
+}) => {
   const { t } = useTranslation();
-
 
   const text = noTranslate ? children : t(children);
   const replacedText = useReplacedText(text, searchTerms, changeTerms);
@@ -18,7 +25,7 @@ const Text = ({ children, noTranslate, markdown, className, onClick,searchTerms,
   } else {
     return (
       <div className={className} onClick={onClick}>
-        {replacedText}
+        {noTranslate ? children : t(children)}
       </div>
     );
   }

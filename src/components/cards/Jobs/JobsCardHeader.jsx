@@ -19,22 +19,45 @@ const JobsCardHeader = ({ data }) => {
     {
       id: 1,
       label: "published",
-      action: () => console.log("published"),
+      action: (e) => {
+        e.stopPropagation();
+        console.log("published");
+      },
       icon: "check",
     },
     {
       id: 2,
       label: "closed",
-      action: () => console.log("cross"),
+      action: (e) => {
+        e.stopPropagation();
+        console.log("closed");
+      },
       icon: "cross",
     },
     {
       id: 3,
       label: "archived",
-      action: () => console.log("archived"),
+      action: (e) => {
+        e.stopPropagation();
+        console.log("archived");
+      },
       icon: "archived",
     },
   ];
+
+  const followed = (e) => {
+    e.stopPropagation();
+    console.log("followed");
+  };
+
+  const edit = (e) => {
+    e.stopPropagation();
+    console.log("edit");
+  };
+  const share = (e) => {
+    e.stopPropagation();
+    console.log("share");
+  };
 
   return (
     <div className="flex justify-between items-start">
@@ -58,12 +81,16 @@ const JobsCardHeader = ({ data }) => {
               isFollowed,
           })}
         >
-          <Icon purpose="followed" custom={followedClassName} />
+          <Icon
+            purpose="followed"
+            custom={followedClassName}
+            onClick={followed}
+          />
         </div>
-        <Button purpose="white_border" leftIcon="edit">
+        <Button purpose="white_border" leftIcon="edit" onClick={edit}>
           edit
         </Button>
-        <Button purpose="white_border" leftIcon="share">
+        <Button purpose="white_border" leftIcon="share" onClick={share}>
           share
         </Button>
         <Dropdown

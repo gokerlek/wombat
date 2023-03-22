@@ -2,37 +2,62 @@ import { Tab } from "@headlessui/react";
 import clsx from "clsx";
 import { Text } from "../../index.js";
 import JobsCard from "../../cards/Jobs/index.jsx";
-import { addRandomJobs } from "../../../dummyData.jsx";
+import { job_list } from "../../../dummyData.jsx";
 import ListActions from "../ListActions.jsx";
 
-import ReactGridLayout from "react-grid-layout";
 import "react-grid-layout/css/styles.css";
 import "react-resizable/css/styles.css";
-import useWindowSize from "../../../hooks/useWindowsSize.jsx";
-import { useState } from "react";
+import { memo, useState } from "react";
+import { useGeneral } from "../../../context/GeneralProvider.jsx";
+import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 
 const Tabs = () => {
-  const { width } = useWindowSize();
-  const minWidth = width < 1000 ? 1000 : width - 280;
+  const { open_sidebar } = useGeneral();
   const tabs = ["all", "followed", "closed", "archived"];
-  const [is_draggable, setDraggable] = useState(false);
+  const [jobs, setJobs] = useState(job_list);
 
-  let jobs = [];
+  const fallowedJobs = job_list.filter((job) => job.isFollowed);
 
-  addRandomJobs(10, jobs);
+  const closedJobs = job_list.filter((job) => job.status === "closed");
 
-  const fallowedJobs = jobs.filter((job) => job.isFollowed);
+  const archivedJobs = job_list.filter((job) => job.status === "archived");
 
-  const closedJobs = jobs.filter((job) => job.status === "closed");
+  const InnerList = memo(({ job, index }) => {
+    return (
+      <Draggable key={job.id + ""} draggableId={job.id + ""} index={index}>
+        {(provided) => (
+          <div
+            className="mb-3.5"
+            ref={provided.innerRef}
+            {...provided.draggableProps}
+            {...provided.dragHandleProps}
+          >
+            <JobsCard key={job.id} jobs={job} />
+          </div>
+        )}
+      </Draggable>
+    );
+  });
 
-  const archivedJobs = jobs.filter((job) => job.status === "archived");
+  const onDragEnd = (result) => {
+    if (!result.destination) {
+      return;
+    }
 
+    const items = Array.from(jobs);
+    const [reorderedItem] = items.splice(result.source.index, 1);
+    items.splice(result.destination.index, 0, reorderedItem);
+
+    setJobs(items);
+  };
   return (
     <Tab.Group>
-      <Tab.List className="flex bg-white px-7  h-[46px] rounded-b-lg  w-[calc(100vw-288px)] ">
-        {tabs.map((category) => (
+      <Tab.List
+        className={clsx("flex bg-white px-7  h-[46px] rounded-b-lg   w-full")}
+      >
+        {tabs.map((category, index) => (
           <Tab
-            key={category}
+            key={index}
             className={({ selected }) =>
               clsx(
                 "w-full text-sm font-normal capitalize border-b-2",
@@ -51,44 +76,37 @@ const Tabs = () => {
 
       <ListActions />
 
-      <div className=" h-[calc(100vh-330px)] no-scrollbar   rounded-lg overflow-scroll w-[calc(100vw-288px)] overflow-hidden">
+      <div
+        className={clsx(
+          " h-[calc(100vh-330px)] no-scrollbar  rounded-lg overflow-scroll overflow-hidden ",
+          {
+            "w-[calc(100vw-288px)]": open_sidebar,
+            "w-[calc(100vw-134px)]": !open_sidebar,
+          }
+        )}
+      >
         <div className="min-w-[800px] mb-7">
           <Tab.Panels>
             <Tab.Panel className="flex flex-col gap-3.5">
-              <ReactGridLayout
-                layouts={jobs.map((job, index) => {
-                  return {
-                    key: job.id,
-                    i: job.id,
-                    x: 0,
-                    y: index,
-                    w: 1,
-                    h: 1,
-                    minW: 1,
-                    minH: 1,
-                  };
-                })}
-                onLayoutChange={(layout, layouts) => {
-                  console.log("onLayoutChange", layout, layouts);
-                }}
-                className="layout"
-                width={minWidth}
-                rowHeight={168}
-                cols={1}
-                autoSize={true}
-                isResizable={false}
-                isDraggable={is_draggable}
-              >
-                {jobs.map((job) => (
-                  <div className="  " key={job.id}>
-                    <JobsCard
-                      key={job.id}
-                      jobs={job}
-                      setDraggable={setDraggable}
-                    />
-                  </div>
-                ))}
-              </ReactGridLayout>
+              <DragDropContext onDragEnd={onDragEnd}>
+                <Droppable droppableId="job-list">
+                  {(provided) => (
+                    <div {...provided.droppableProps} ref={provided.innerRef}>
+                      {jobs.map((job, index) => {
+                        return (
+                          <InnerList
+                            key={job.id + ""}
+                            job={job}
+                            index={index}
+                          />
+                        );
+                      })}
+
+                      {provided.placeholder}
+                    </div>
+                  )}
+                </Droppable>
+              </DragDropContext>
             </Tab.Panel>
             <Tab.Panel className="flex flex-col gap-3.5">
               {fallowedJobs.map((job) => (

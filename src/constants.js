@@ -68,3 +68,13 @@ export const sidebarItems = [
     permissions: [permissions.user],
   },
 ];
+
+export const JOB_STATUS = {
+  PUBLISHED: "published",
+  CLOSED: "closed",
+  DRAFT: "draft",
+  ARCHIVED: "archived",
+  EXPIRED: "expired",
+  DELETED: "deleted",
+  NEW: "new",
+};

@@ -5,6 +5,7 @@ import NoMatch from "./pages/NoMatch.jsx";
 import MainLayout from "./layouts/main.jsx";
 import Home from "./pages/Home.jsx";
 import Jobs from "./pages/jobs/index.jsx";
+import Details from "./pages/jobs/Details.jsx";
 
 let routes = [
   // {
@@ -23,6 +24,10 @@ let routes = [
       { path: paths.campaigns, element: <Home /> },
       { path: paths.settings, element: <Home /> },
     ],
+  },
+  {
+    element: <MainLayout full />,
+    children: [{ path: paths.job_details, element: <Details /> }],
   },
   {
     path: "*",

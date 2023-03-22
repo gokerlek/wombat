@@ -1,18 +1,26 @@
 import * as React from "react";
 import { Outlet } from "react-router-dom";
 import { Header, Sidebar } from "../components/index.js";
-import useToggle from "../hooks/useToggle.jsx";
-const MainLayout = () => {
-  const [status, toggleStatus] = useToggle(true);
-
+import { useGeneral } from "../context/GeneralProvider.jsx";
+import clsx from "clsx";
+const MainLayout = ({ full }) => {
+  const { open_sidebar, toggleSidebar } = useGeneral();
   return (
-    <div className="w-screen h-screen bg-gray-50 ">
-      <Header toggleStatus={toggleStatus} />
+    <div className="w-screen h-screen  ">
+      <Header toggleStatus={toggleSidebar} />
 
       <div className="flex flex-row w-screen h-[calc(100vh-84px)]">
-        <Sidebar isOpen={status} />
+        <Sidebar isOpen={open_sidebar} />
 
-        <div className="w-full  p-7 rounded-t-2xl ">
+        <div
+          className={clsx("w-full rounded bg-gray-50 rounded-tl-xl", {
+            "px-7 pt-7": full,
+            "p-7": !full,
+
+            "w-[calc(100vw-288px)]": open_sidebar,
+            "w-[calc(100vw-134px)]": !open_sidebar,
+          })}
+        >
           <Outlet />
         </div>
       </div>

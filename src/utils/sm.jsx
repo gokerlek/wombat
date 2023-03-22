@@ -44,7 +44,7 @@
  *
  *   return <div>{loading ? 'Loading...' : JSON.stringify(data)}</div>;
  * }
- *
+
  * @A
  */
 

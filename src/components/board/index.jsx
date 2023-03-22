@@ -1,7 +1,7 @@
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import Column from "./Column";
 import useBoardActions from "./useBoardActions.jsx";
-import { initial_data } from "../../dummyData.jsx";
+import initial_data from "./data";
 
 const Board = () => {
   const { state, onDragEnd, deleteTask } = useBoardActions(

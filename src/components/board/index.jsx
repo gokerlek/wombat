@@ -3,34 +3,33 @@ import Column from "./Column";
 import useBoardActions from "./useBoardActions.jsx";
 import { initial_data } from "../../dummyData.jsx";
 
-const InnerList = ({
-  column,
-  taskMap,
-  index,
-  length,
-  addNewTask,
-  deleteTask,
-  deleteColumn,
-}) => {
-  const tasks = column?.taskIds?.map((taskId) => taskMap[taskId]);
-  return (
-    <Column
-      column={column}
-      tasks={tasks}
-      index={index}
-      length={length}
-      addNewTask={addNewTask}
-      deleteTask={deleteTask}
-      deleteColumn={deleteColumn}
-    />
-  );
-};
-
 const Board = () => {
   const { state, onDragEnd, deleteTask } = useBoardActions(
     "board",
     initial_data
   );
+  const InnerList = ({
+    column,
+    taskMap,
+    index,
+    length,
+    addNewTask,
+    deleteTask,
+    deleteColumn,
+  }) => {
+    const tasks = column?.taskIds?.map((taskId) => taskMap[taskId]);
+    return (
+      <Column
+        column={column}
+        tasks={tasks}
+        index={index}
+        length={length}
+        addNewTask={addNewTask}
+        deleteTask={deleteTask}
+        deleteColumn={deleteColumn}
+      />
+    );
+  };
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>

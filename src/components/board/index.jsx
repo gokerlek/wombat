@@ -12,7 +12,7 @@ const InnerList = ({
   deleteTask,
   deleteColumn,
 }) => {
-  const tasks = column.taskIds.map((taskId) => taskMap[taskId]);
+  const tasks = column?.taskIds?.map((taskId) => taskMap[taskId]);
   return (
     <Column
       column={column}
@@ -41,15 +41,15 @@ const Board = () => {
             {...provided.droppableProps}
             ref={provided.innerRef}
           >
-            {state?.columnOrder.map((columnId, index) => {
-              const column = state.columns[columnId];
+            {state?.columnOrder?.map((columnId, index) => {
+              const column = state?.columns[columnId];
               return (
                 <InnerList
                   key={column?.id}
                   column={column}
-                  taskMap={state.tasks}
+                  taskMap={state?.tasks}
                   index={index}
-                  length={state.columnOrder.length}
+                  length={state?.columnOrder?.length}
                   deleteTask={deleteTask}
                 />
               );

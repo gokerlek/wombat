@@ -1,4 +1,4 @@
-import paths from "./paths.js";
+import { paths } from "./paths.js";
 
 export const constants = {
   productManagement: "product-management",

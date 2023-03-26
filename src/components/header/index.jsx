@@ -1,28 +1,30 @@
 import * as React from "react";
 import Icon from "../Icon.jsx";
-import { Button } from "../index.js";
-import SearchBar from "../search/index.jsx";
+import HEADER_TYPE from "./header-types.jsx";
+import DefaultItems from "./DefaultItems.jsx";
+import CreateItems from "./CreateItems.jsx";
 
-const Header = ({ toggleStatus }) => {
+const Header = ({ icon_action, purpose = HEADER_TYPE.DEFAULT }) => {
+  const is_default = purpose === HEADER_TYPE.DEFAULT;
+  const is_create = purpose === HEADER_TYPE.CREATE;
+
   return (
     <div className=" h-[84px] bg-white pr-7 flex items-center justify-between ">
-      <div className="font-semibold text-4xl min-w-[235px] h-full pl-7 flex items-center gap-5">
-        <Icon purpose="hamburger" onClick={toggleStatus} />
+      <div className="flex items-center gap-5 font-semibold text-4xl min-w-[235px] h-full pl-7 ">
+        {is_default && <Icon purpose="hamburger" onClick={icon_action} />}
+        {is_create && (
+          <Icon
+            className="hover:text-cyan-500  text-gray-900 "
+            purpose="arrow-left"
+            onClick={icon_action}
+          />
+        )}
         <Icon purpose="logo" />
       </div>
 
       <div className="flex flex-row items-center gap-4 h-full  flex-1 justify-end">
-        <SearchBar />
-        <Button purpose="cyan" fit rightIcon="plus" height={48}>
-          create new job
-        </Button>
-        <Icon
-          className="w-6 min-w-[24px]"
-          purpose="calendar"
-          onClick={() => {}}
-        />
-        <Icon purpose="bell" onClick={() => {}} />
-        <div className="min-w-[38px] h-[38px] rounded-full bg-cyan-500"></div>
+        {is_default && <DefaultItems />}
+        {is_create && <CreateItems />}
       </div>
     </div>
   );

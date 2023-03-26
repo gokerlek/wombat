@@ -4,6 +4,7 @@ import { ReactComponent as Loading } from "../assets/icons/Loading.svg";
 import { ReactComponent as Buildings } from "../assets/icons/Buildings.svg";
 import { ReactComponent as Search } from "../assets/icons/Search.svg";
 import { ReactComponent as Dot } from "../assets/icons/Dot.svg";
+import { ReactComponent as InfoCircle } from "../assets/icons/InfoCircle.svg";
 
 import { ReactComponent as Wombat } from "../assets/icons/logo/Wombat.svg";
 import { ReactComponent as Hamburger } from "../assets/icons/Hamburger.svg";
@@ -14,6 +15,8 @@ import { ReactComponent as Right } from "../assets/icons/arrows/Right.svg";
 import { ReactComponent as Up } from "../assets/icons/arrows/Up.svg";
 import { ReactComponent as Down } from "../assets/icons/arrows/Down.svg";
 import { ReactComponent as Selector } from "../assets/icons/arrows/Selector.svg";
+import { ReactComponent as ArrowLeft } from "../assets/icons/arrows/ArrowLeft.svg";
+import { ReactComponent as ArrowRight } from "../assets/icons/arrows/ArrowRight.svg";
 
 import { ReactComponent as Overview } from "../assets/icons/sidebar/Overview.svg";
 import { ReactComponent as OverviewSolid } from "../assets/icons/sidebar/OverviewSolid.svg";
@@ -32,6 +35,11 @@ import { ReactComponent as SettingsSolid } from "../assets/icons/sidebar/Setting
 
 import { ReactComponent as Bell } from "../assets/icons/header/Bell.svg";
 import { ReactComponent as Calendar } from "../assets/icons/header/Calendar.svg";
+import { ReactComponent as Eye } from "../assets/icons/header/Eye.svg";
+import { ReactComponent as EyeActive } from "../assets/icons/header/EyeActive.svg";
+import { ReactComponent as HideEye } from "../assets/icons/header/HideEye.svg";
+import { ReactComponent as World } from "../assets/icons/header/World.svg";
+import { ReactComponent as Building } from "../assets/icons/header/Building.svg";
 
 import { ReactComponent as Plus } from "../assets/icons/buttons/Plus.svg";
 import { ReactComponent as Reorder } from "../assets/icons/buttons/Reorder.svg";
@@ -61,6 +69,8 @@ const iconList = (purpose, { custom }) => {
       return <Hamburger />;
     case "search":
       return <Search />;
+    case "info_circle":
+      return <InfoCircle />;
 
     case "loading":
       return <Loading />;
@@ -82,6 +92,10 @@ const iconList = (purpose, { custom }) => {
       return <Down />;
     case "selector":
       return <Selector />;
+    case "arrow-left":
+      return <ArrowLeft />;
+    case "arrow-right":
+      return <ArrowRight />;
 
     // SIDEBAR
     case "overview":
@@ -118,6 +132,16 @@ const iconList = (purpose, { custom }) => {
       return <Bell />;
     case "calendar":
       return <Calendar />;
+    case "eye":
+      return <Eye />;
+    case "hide eye":
+      return <HideEye />;
+    case "eye active":
+      return <EyeActive />;
+    case "world":
+      return <World />;
+    case "building":
+      return <Building />;
 
     // BUTTONS
     case "plus":

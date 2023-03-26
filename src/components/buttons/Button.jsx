@@ -30,7 +30,7 @@ const Button = ({
   };
 
   const disabledClassName = {
-    " cursor-not-allowed": disabled,
+    " cursor-not-allowed opacity-50": disabled,
     "cursor-pointer": !disabled,
   };
 
@@ -48,9 +48,16 @@ const Button = ({
   const containerClassName = {
     cyan: clsx(
       baseContainerClassName,
-      "font-normal  text-center text-sm",
+      "font-normal  text-center text-base",
       "text-white",
-      "bg-cyan-500 hover:bg-cyan-600"
+      "bg-cyan-500",
+      { "hover:bg-cyan-600": !disabled }
+    ),
+    soft_cyan: clsx(
+      baseContainerClassName,
+      "font-normal  text-center text-sm",
+      "text-cyan-500",
+      "bg-cyan-100 hover:bg-cyan-200"
     ),
     cyan_border: clsx(
       baseContainerClassName,
@@ -65,6 +72,13 @@ const Button = ({
       "text-gray-900",
       "bg-white hover:bg-gray-50",
       "border border-gray-200"
+    ),
+    white_dashed: clsx(
+      baseContainerClassName,
+      "font-medium  text-center text-base",
+      "text-gray-900",
+      "bg-white hover:bg-gray-50",
+      "border-dashed"
     ),
     gray: clsx(
       baseContainerClassName,

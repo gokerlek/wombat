@@ -2,7 +2,7 @@ import clsx from "clsx";
 import JobsCardHeader from "./JobsCardHeader.jsx";
 import CandidatesScore from "./CandidatesScore.jsx";
 import { useNavigate } from "react-router-dom";
-import paths from "../../../paths.js";
+import { paths } from "../../../paths.js";
 
 const JobsCard = ({ jobs }) => {
   const navigate = useNavigate();

@@ -13,8 +13,16 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
-const Checkbox = ({ label, initialState, onChange, isChecked, table }) => {
+const Checkbox = ({
+  label,
+  initialState,
+  onChange,
+  isChecked,
+  table,
+  custom_label,
+}) => {
   const [checked, setChecked] = useState(initialState ?? false);
+  const CustomLabel = custom_label ?? null;
 
   const handleCheckboxChange = (event) => {
     setChecked(event.target.checked);
@@ -24,24 +32,25 @@ const Checkbox = ({ label, initialState, onChange, isChecked, table }) => {
   const { t } = useTranslation();
 
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex items-start gap-2">
       <input
         type="checkbox"
         checked={table ? isChecked : checked}
         onChange={handleCheckboxChange}
-        className="w-4 h-4  border border-t500 rounded
-        text-primary
+        className="w-4 h-4  mt-1 border border-t500 rounded
+        text-cyan-500
         cursor-pointer
         appearance-none
-        checked:accent-primary
-        checked:bg-primary
+        checked:accent-cyan-500
+        checked:bg-cyan-500
         bg-white
-        transform transition duration-300 ease-in-out hover:scale-110
         focus:outline-none focus:ring-transparent checked:hover:bg-primary"
       />
       {label && (
-        <label className="text-sm font-medium text-tGray-500">{t(label)}</label>
+        <label className="text-sm font-normal text-tGray-500">{t(label)}</label>
       )}
+
+      {custom_label && <CustomLabel />}
     </div>
   );
 };

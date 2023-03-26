@@ -1,4 +1,11 @@
-const paths = {
+export const auth = {
+  login: "/login",
+  signup: "/signup",
+  forgot_password: "/forgot-password",
+  before_start: "/before-start",
+};
+
+export const dashboard = {
   main: "/",
   jobs: "/jobs",
   job_details: "/jobs/:id",
@@ -7,6 +14,10 @@ const paths = {
   reports: "/reports",
   campaigns: "/campaigns",
   settings: "/settings",
+  create_job: "/create-job",
 };
 
-export default paths;
+export const paths = {
+  ...auth,
+  ...dashboard,
+};

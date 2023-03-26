@@ -32,15 +32,19 @@ const Dropdown = ({ options, status }) => {
         onClick={(e) => e.stopPropagation()}
         className="flex  items-center h-full p-3 text-white"
       >
-        <Icon
-          className="flex h-full items-center cursor-pointer text-white"
-          purpose={options[0]?.icon ?? "more"}
-        />
-        <Text className="px-2 pr-3 text-white border-r border-white capitalize">
-          {selectedItem?.label}
-        </Text>
+        {({ open }) => (
+          <>
+            <Icon
+              className="flex h-full items-center cursor-pointer text-white"
+              purpose={options[0]?.icon ?? "more"}
+            />
+            <Text className="px-2 pr-3 text-white border-r border-white capitalize">
+              {selectedItem?.label}
+            </Text>
 
-        <Icon purpose={open ? "up" : "down"} className="pl-2" />
+            <Icon purpose={open ? "up" : "down"} className="pl-2" />
+          </>
+        )}
       </Listbox.Button>
 
       <Listbox.Options className="absolute -right-2 mt-2 w-44 origin-top-right border border-border rounded-lg bg-white shadow-lg z-10">

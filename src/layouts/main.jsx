@@ -7,13 +7,13 @@ const MainLayout = ({ full }) => {
   const { open_sidebar, toggleSidebar } = useGeneral();
   return (
     <div className="w-screen h-screen  ">
-      <Header toggleStatus={toggleSidebar} />
+      <Header icon_action={toggleSidebar} />
 
       <div className="flex flex-row w-screen h-[calc(100vh-84px)]">
         <Sidebar isOpen={open_sidebar} />
 
         <div
-          className={clsx("w-full rounded bg-gray-50 rounded-tl-xl", {
+          className={clsx("w-full rounded bg-gray-50 rounded-tl-2xl", {
             "px-7 pt-7": full,
             "p-7": !full,
 

@@ -5,8 +5,6 @@ import JobsCard from "../../cards/Jobs/index.jsx";
 import { job_list } from "../../../dummyData.jsx";
 import ListActions from "../ListActions.jsx";
 
-import "react-grid-layout/css/styles.css";
-import "react-resizable/css/styles.css";
 import { memo, useState } from "react";
 import { useGeneral } from "../../../context/GeneralProvider.jsx";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";

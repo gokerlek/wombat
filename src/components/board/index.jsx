@@ -36,7 +36,7 @@ const Board = () => {
       <Droppable droppableId="all-columns" direction="horizontal" type="column">
         {(provided) => (
           <div
-            className="flex bg-white px-5 pt-5 h-full w-fit rounded-t-lg "
+            className="flex bg-white pl-5 pt-5 h-full w-fit rounded-t-lg "
             {...provided.droppableProps}
             ref={provided.innerRef}
           >

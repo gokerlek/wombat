@@ -9,6 +9,10 @@ const names = {
   job_location: { name: "job location", placeholder: "select job location" },
   seniority: { name: "seniority", placeholder: "select seniority" },
   industry: { name: "industry", placeholder: "select job type" },
+  function: {
+    name: "function",
+    placeholder: "Start typing to choose function",
+  },
   job_description: { name: "job description", placeholder: "" },
   qualifications: { name: "qualifications", placeholder: "" },
   company_description: { name: "company description", placeholder: "" },

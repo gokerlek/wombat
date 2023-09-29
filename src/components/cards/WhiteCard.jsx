@@ -1,7 +1,5 @@
-const WhiteCard = () => {
-  return (
-    <div className="bg-white">
-      <h1>White Card</h1>
-    </div>
-  );
+const WhiteCard = ({ children }) => {
+  return <div className="bg-white  p-7 rounded-xl ">{children}</div>;
 };
+
+export default WhiteCard;

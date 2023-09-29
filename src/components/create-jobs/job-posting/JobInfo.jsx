@@ -40,8 +40,8 @@ const JobInfo = () => {
           <ListBox placeholder={names.industry.placeholder} />
         </div>
         <div className="space-y-2 flex-1">
-          <Text className="label">{names.job_location.name}</Text>
-          <ListBox placeholder={names.job_location.placeholder} />
+          <Text className="label">{names.function.name}</Text>
+          <ListBox placeholder={names.function.placeholder} />
         </div>
       </div>
     </div>

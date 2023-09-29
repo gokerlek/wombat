@@ -1,0 +1,37 @@
+const create_jobs_default_data = {
+  job_posting: {
+    job_title: "",
+    workplace_type: "",
+    job_type: "",
+    job_location: "",
+    seniority: "",
+    industry: "",
+    function: "",
+    job_description: "",
+    qualification: "",
+    company_description: "",
+    additional_information: "",
+    salary: {
+      min: "",
+      max: "",
+      period: "",
+      currency: "",
+    },
+  },
+  candidate_profile: {
+    total_experience: "",
+    required_education: "",
+    remote_experience: "",
+    competencies: [],
+    technical_skills: [],
+  },
+  application_form: {
+    full_name: "",
+    email: "",
+    phone: "",
+    photo: "",
+    location: "",
+    cover_letter: "",
+  },
+  settings: {},
+};
